@@ -1,7 +1,7 @@
-package pl.sda.filter;
+package pl.n2god.filter;
 
-import pl.sda.model.User;
-import pl.sda.model.enimeration.Role;
+import pl.n2god.model.User;
+import pl.n2god.model.enimeration.Role;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -9,32 +9,30 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(filterName = "authority", servletNames = {"userInfo"})
-public class AuthorityFilter implements Filter {
-    @java.lang.Override
-    public void init(FilterConfig filterConfig) throws ServletException {
-
-    }
-
-    @java.lang.Override
-    public void destroy() {
-
-    }
-
+@WebFilter(filterName = "admin", servletNames = {"users"})
+public class AdminFilter implements Filter {
     @Override
-
-
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpSession session = req.getSession();
 
         User user = (User) session.getAttribute("user");
 
-        if (user != null && (Role.USER.equals(user.getRole()) || Role.ADMIN.equals(user.getRole()))) {
+        if (user != null && Role.ADMIN.equals(user.getRole())) {
             filterChain.doFilter(servletRequest, servletResponse);
         } else {
             servletResponse.getWriter().println("Nie masz uprawnień");
         }
+
+    }
+
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
+
+    }
+
+    @Override
+    public void destroy() {
 
     }
 }

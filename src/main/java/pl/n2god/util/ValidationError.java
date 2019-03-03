@@ -1,5 +1,4 @@
-package pl.sda.util;
-
+package pl.n2god.util;
 
 public class ValidationError {
     private String field;

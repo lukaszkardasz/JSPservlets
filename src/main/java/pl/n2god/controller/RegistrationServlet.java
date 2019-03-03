@@ -1,10 +1,10 @@
-package pl.sda.controller;
+package pl.n2god.controller;
 
-import pl.sda.model.User;
-import pl.sda.model.enimeration.Role;
-import pl.sda.repository.UserRepository;
-import pl.sda.util.Message;
-import pl.sda.util.ValidationError;
+import pl.n2god.model.User;
+import pl.n2god.model.enimeration.Role;
+import pl.n2god.repository.UserRepository;
+import pl.n2god.util.Message;
+import pl.n2god.util.ValidationError;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

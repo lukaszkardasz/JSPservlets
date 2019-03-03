@@ -1,6 +1,6 @@
-package pl.sda.model;
+package pl.n2god.model;
 
-import pl.sda.model.enimeration.Role;
+import pl.n2god.model.enimeration.Role;
 
 public class User {
     private String login;
@@ -17,8 +17,8 @@ public class User {
         this.role = role;
     }
 
-    public boolean isAdmin(){
-        return Role.ADMIN.equals(this.role);
+    public boolean isAdmin() {
+        return Role.ADMIN.equals(role);
     }
 
     public String getLogin() {

@@ -1,10 +1,8 @@
-package pl.sda.controller;
+package pl.n2god.controller;
 
-
-
-import pl.sda.model.User;
-import pl.sda.repository.UserRepository;
-import pl.sda.util.Message;
+import pl.n2god.model.User;
+import pl.n2god.repository.UserRepository;
+import pl.n2god.util.Message;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,6 +23,7 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         HttpSession session = req.getSession();
+        PrintWriter writer = resp.getWriter();
 
         if (session.getAttribute("user") == null) {
             String login = req.getParameter("login");

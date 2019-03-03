@@ -14,7 +14,7 @@
 <p1>REDIRECTED SITE</p1>
 
 
-<jsp:useBean id="user" scope="session" class="pl.sda.model.User"/>
+<jsp:useBean id="user" scope="session" class="pl.n2god.model.User"/>
 <section>
     <h1>
         Strona główna ${param.message}

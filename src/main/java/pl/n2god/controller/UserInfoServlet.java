@@ -1,6 +1,6 @@
-package pl.sda.controller;
+package pl.n2god.controller;
 
-import pl.sda.model.User;
+import pl.n2god.model.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

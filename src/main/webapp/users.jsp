@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: n2god
-  Date: 2019-03-03
-  Time: 17:23
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html; UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
@@ -18,15 +11,15 @@
 </head>
 <body>
 
-<c:forEach items="${ requestScope.users }" var="user" >
-    <section>
-        <ul>
-            <li>Login: ${ user.login }</li>
-            <li>Password: ${ user.password }</li>
-            <li>Role: ${ user.role }</li>
-        </ul>
-    </section>
-</c:forEach>
+    <c:forEach items="${ requestScope.users }" var="user" >
+        <section>
+            <ul>
+                <li>Login: ${ user.login }</li>
+                <li>Password: ${ user.password }</li>
+                <li>Role: ${ user.role }</li>
+            </ul>
+        </section>
+    </c:forEach>
 
 </body>
 </html>

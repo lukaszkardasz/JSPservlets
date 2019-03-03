@@ -1,7 +1,7 @@
-package pl.sda.repository;
+package pl.n2god.repository;
 
-import pl.sda.model.User;
-import pl.sda.model.enimeration.Role;
+import pl.n2god.model.User;
+import pl.n2god.model.enimeration.Role;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,9 +21,9 @@ public class UserRepository {
 
     private UserRepository() {
         users = new ArrayList<>();
-        users.add(new User("user", "user1", Role.USER));
-        users.add(new User("admin", "admin1", Role.ADMIN));
-        users.add(new User("test", "test1", Role.USER));
+        users.add(new User("user", "user123", Role.USER));
+        users.add(new User("admin", "admin123", Role.ADMIN));
+        users.add(new User("test", "test123", Role.USER));
     }
 
     public List<User> getUsers() {
@@ -36,6 +36,7 @@ public class UserRepository {
                 .findFirst();
     }
 
+
     public void save(User user) {
         users.add(user);
     }
@@ -43,5 +44,4 @@ public class UserRepository {
     public boolean userExist(String login) {
         return users.stream().anyMatch(user -> user.getLogin().equals(login));
     }
-
 }
