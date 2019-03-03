@@ -10,8 +10,11 @@
 </head>
 <body>
 
+    <%--przekazujemy stronę na którąchcemy przekierować--%>
+    <jsp:forward page="redirect.jsp"/>
     <section>
         <h1>Strona główna</h1>
+
     </section>
 
 </body>
