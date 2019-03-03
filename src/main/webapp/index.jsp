@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!doctype html>
 <html lang="pl">
 <head>
@@ -9,18 +10,32 @@
     <title>Formularz logowania</title>
 </head>
 <body>
+
 <h1><b>Panel logowania</b></h1>
 <h4>
     Dzisiaj jest: <% out.println(java.time.LocalDate.now().toString());%>
 </h4>
 
 <section>
-    <form action="/login" method="post">
-        <input type="text" name="login">
-        <input type="password" name="password">
-        <input type="submit" value="Loguj">
-    </form>
+
+    <c:if test="${ empty sessionScope.user }">
+        <section>
+            <form action="/login" method="post">
+                <input type="text" name="login">
+                <input type="password" name="password">
+                <input type="submit" value="Loguj">
+            </form>
+        </section>
+    </c:if>
+
+    <c:if test="${ not (empty sessionScope.user) }">
+        <a href="/logout">Wyloguj</a>
+    </c:if>
+
 </section>
+<c:forEach items="${requestScope.users}" var="usery">
+    ${usery.login}<br>
+</c:forEach>
 
 </body>
 </html>

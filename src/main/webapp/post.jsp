@@ -11,7 +11,9 @@
 <body>
 
     <%--przekazujemy stronę na którąchcemy przekierować--%>
-    <jsp:forward page="redirect.jsp"/>
+    <jsp:forward page="redirect.jsp">
+    <jsp:param name="message" value="something message"/>
+    </jsp:forward>/>
     <section>
         <h1>Strona główna</h1>
 
