@@ -1,5 +1,7 @@
 package pl.sda.controller;
 
+import pl.sda.util.Message;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,6 +16,8 @@ public class LogoutServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         req.getSession().invalidate();
+        req.setAttribute("message", Message.info("Zostałeś wylogowany"));
+        req.getRequestDispatcher("/index.jsp").forward(req, resp);
 
     }
 }

@@ -36,4 +36,12 @@ public class UserRepository {
                 .findFirst();
     }
 
+    public void save(User user) {
+        users.add(user);
+    }
+
+    public boolean userExist(String login) {
+        return users.stream().anyMatch(user -> user.getLogin().equals(login));
+    }
+
 }
