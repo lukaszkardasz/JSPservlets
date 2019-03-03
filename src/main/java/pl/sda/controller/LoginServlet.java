@@ -2,6 +2,7 @@ package pl.sda.controller;
 
 import pl.sda.model.User;
 import pl.sda.repository.UserRepository;
+import sun.plugin2.message.Message;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,6 +35,9 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("user", optUser.get());
                 req.getRequestDispatcher("/post.jsp").forward(req, resp);
                 writer.println("Zostałeś zalogowany jako " + optUser.get().getLogin());
+
+
+
             } else {
                 writer.println("Niepoprawne dane logowania");
             }

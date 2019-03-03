@@ -26,10 +26,14 @@
                 <input type="submit" value="Loguj">
             </form>
         </section>
+        <jsp:param name="message" value="something message"/>
     </c:if>
 
     <c:if test="${ not (empty sessionScope.user) }">
-        <a href="/logout">Wyloguj</a>
+        <ul>
+            <li><a href="/logout">Wyloguj</a></li>
+        </ul>
+
     </c:if>
 
 </section>
