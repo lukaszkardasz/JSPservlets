@@ -21,9 +21,9 @@ public class UserRepository {
 
     private UserRepository() {
         users = new ArrayList<>();
-        users.add(new User("user", "user123", Role.USER));
-        users.add(new User("admin", "admin123", Role.ADMIN));
-        users.add(new User("test", "test123", Role.USER));
+        users.add(new User("user", "user1", Role.USER));
+        users.add(new User("admin", "admin1", Role.ADMIN));
+        users.add(new User("test", "test1", Role.USER));
     }
 
     public List<User> getUsers() {
