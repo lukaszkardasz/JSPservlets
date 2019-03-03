@@ -19,7 +19,7 @@ public class LoginServlet extends HttpServlet {
     private UserRepository userRepository = UserRepository.getInstance();
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         HttpSession session = req.getSession();
         PrintWriter writer = resp.getWriter();
@@ -32,6 +32,7 @@ public class LoginServlet extends HttpServlet {
 
             if (optUser.isPresent()) {
                 session.setAttribute("user", optUser.get());
+                req.getRequestDispatcher("/post.jsp").forward(req, resp);
                 writer.println("Zostałeś zalogowany jako " + optUser.get().getLogin());
             } else {
                 writer.println("Niepoprawne dane logowania");
