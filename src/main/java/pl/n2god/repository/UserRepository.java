@@ -2,10 +2,12 @@ package pl.n2god.repository;
 
 import pl.n2god.model.User;
 import pl.n2god.model.enimeration.Role;
+import pl.n2god.util.IdGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
 
 public class UserRepository {
 
@@ -21,9 +23,9 @@ public class UserRepository {
 
     private UserRepository() {
         users = new ArrayList<>();
-        users.add(new User("user", "user1", Role.USER));
-        users.add(new User("admin", "admin1", Role.ADMIN));
-        users.add(new User("test", "test1", Role.USER));
+        save(new User(1L, "user", "user1", Role.USER));
+        save(new User(2L,"admin", "admin1", Role.ADMIN));
+        save(new User(3L,"test", "test1", Role.USER));
     }
 
     public List<User> getUsers() {
@@ -38,6 +40,7 @@ public class UserRepository {
 
 
     public void save(User user) {
+        user.setId(IdGenerator.next());
         users.add(user);
     }
 

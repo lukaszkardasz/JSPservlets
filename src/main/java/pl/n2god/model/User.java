@@ -6,15 +6,25 @@ public class User {
     private String login;
     private String password;
     private Role role;
+    private long id;
 
-    public User() {
+    public User(String login, String password, Role user) {
 
     }
 
-    public User(String login, String password, Role role) {
+    public User(long id, String login, String password, Role role) {
+        this.id = id;
         this.login = login;
         this.password = password;
         this.role = role;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public boolean isAdmin() {
@@ -45,3 +55,4 @@ public class User {
         this.role = role;
     }
 }
+

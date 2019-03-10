@@ -3,6 +3,7 @@ package pl.n2god.controller;
 import pl.n2god.model.User;
 import pl.n2god.model.enimeration.Role;
 import pl.n2god.repository.UserRepository;
+import pl.n2god.service.RegistrationService;
 import pl.n2god.util.Message;
 import pl.n2god.util.ValidationError;
 
@@ -17,7 +18,7 @@ import java.util.Optional;
 @WebServlet(name = "registration", urlPatterns = "/registration")
 public class RegistrationServlet extends HttpServlet {
 
-    private UserRepository userRepository = UserRepository.getInstance();
+    private RegistrationService registrationService = RegistrationService.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -36,11 +37,10 @@ public class RegistrationServlet extends HttpServlet {
         String password = req.getParameter("password");
         String repeatPassword = req.getParameter("repeatPassword");
 
-        Optional<ValidationError> error = validateUserData(login, password, repeatPassword);
+        Optional<ValidationError> error = registrationService.validateUserData(login, password, repeatPassword);
 
         if (!error.isPresent()) {
-            User user = new User(login, password, Role.USER);
-            userRepository.save(user);
+            registrationService.registerUser(login, password);
             req.setAttribute("message", Message.success("Twoje konto zostało zarejestrowane, możesz się zalogować!"));
             req.getRequestDispatcher("/index.jsp").forward(req, resp);
         } else {
@@ -50,13 +50,5 @@ public class RegistrationServlet extends HttpServlet {
 
     }
 
-    private Optional<ValidationError> validateUserData(String login, String password, String repeatPassword) {
-        Optional<ValidationError> error = Optional.empty();
-        if (userRepository.userExist(login)) {
-            error = Optional.of(new ValidationError("login", "Ten login jest już zajęty!"));
-        } else if (!password.equals(repeatPassword)) {
-            error = Optional.of(new ValidationError("password", "Wpisane hasła nie są takie same!"));
-        }
-        return error;
-    }
+
 }

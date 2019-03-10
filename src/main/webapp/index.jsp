@@ -39,7 +39,7 @@
         <a href="${pageContext.request.contextPath}/users">Wyświetl użytkowników</a>
     </c:if>
 
-    <c:forEach begin="5" end="10" step="1" varStatus="i">
+    <c:forEach begin="1" end="5" step="1" varStatus="i">
         <h3>${ i.index }. Lorem ipsum dolor.</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium amet animi aspernatur aut autem blanditiis culpa cum cupiditate, distinctio dolorem dolores ea eos et ex facilis fuga fugiat harum illum impedit incidunt laboriosam, libero nobis nulla quam qui quo ratione rem repellendus reprehenderit rerum saepe sed sequi unde ut voluptate?</p>
     </c:forEach>

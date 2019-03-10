@@ -2,6 +2,7 @@ package pl.n2god.controller;
 
 import pl.n2god.model.User;
 import pl.n2god.repository.UserRepository;
+import pl.n2god.service.UserService;
 import pl.n2god.util.Message;
 
 import javax.servlet.ServletException;
@@ -17,7 +18,7 @@ import java.util.Optional;
 @WebServlet(name = "login", urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {
 
-    private UserRepository userRepository = UserRepository.getInstance();
+    private UserService userService = UserService.getInstance();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -29,7 +30,7 @@ public class LoginServlet extends HttpServlet {
             String login = req.getParameter("login");
             String password = req.getParameter("password");
 
-            Optional<User> optUser = userRepository.getUserByLoginData(login, password);
+            Optional<User> optUser = userService.loginUser(login, password);
 
             if (optUser.isPresent()) {
                 session.setAttribute("user", optUser.get());
