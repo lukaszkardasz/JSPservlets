@@ -1,7 +1,7 @@
 package pl.n2god.controller;
 
-import pl.n2god.model.User;
-import pl.n2god.repository.UserRepository;
+import pl.n2god.model.Post;
+import pl.n2god.service.PostService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,17 +11,18 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "users", urlPatterns = "/users")
-public class UsersServlet extends HttpServlet {
+@WebServlet(name = "posts", urlPatterns = "/posts")
+public class PostServlet extends HttpServlet {
 
-    private UserRepository userRepository = UserRepository.getInstance();
+    private PostService postService = PostService.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.doGet(req, resp);
 
-        List<User> users = userRepository.getUsers();
+        List<Post> posts = postService.getPosts();
 
-        req.setAttribute("users", users);
-        req.getRequestDispatcher("/users.jsp").forward(req, resp);
+        req.setAttribute("posts", posts);
+        req.getRequestDispatcher("/showPost.jsp").include(req, resp);
     }
 }

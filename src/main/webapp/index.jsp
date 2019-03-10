@@ -8,7 +8,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link type="text/css" rel="stylesheet" href="${ pageContext.request.contextPath }/style.css">
-    <title>Hello JSP</title>
+    <title>Strona główna</title>
 </head>
 <body>
 
@@ -39,10 +39,10 @@
         <a href="${pageContext.request.contextPath}/users">Wyświetl użytkowników</a>
     </c:if>
 
-    <c:forEach begin="1" end="5" step="1" varStatus="i">
-        <h3>${ i.index }. Lorem ipsum dolor.</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium amet animi aspernatur aut autem blanditiis culpa cum cupiditate, distinctio dolorem dolores ea eos et ex facilis fuga fugiat harum illum impedit incidunt laboriosam, libero nobis nulla quam qui quo ratione rem repellendus reprehenderit rerum saepe sed sequi unde ut voluptate?</p>
-    </c:forEach>
+    <div>
+        <jsp:include page="/posts"/>
+    </div>
+
 
 
 </body>
