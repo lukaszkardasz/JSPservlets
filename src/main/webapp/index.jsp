@@ -24,12 +24,6 @@
     <c:choose>
         <c:when test="${ empty sessionScope.user }">
 
-
-
-
-                <div>Panel <span>Logowania</span></div>
-            </div>
-            <br>
             <div class="login">
                 <form action="${ pageContext.request.contextPath }/login" method="post">
                 <input type="text" placeholder="Login" name="login"><br>

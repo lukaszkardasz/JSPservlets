@@ -8,6 +8,7 @@ import pl.n2god.repository.PostRepository;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 
 public class PostService {
@@ -40,4 +41,7 @@ public class PostService {
     }
 
 
+    public Optional<Post> getPost(Long id) {
+        return postRepository.getPost(id);
+    }
 }

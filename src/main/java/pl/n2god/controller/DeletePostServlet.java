@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(name = "deletePost", urlPatterns = "/deletePost")
-public class DeletePost extends HttpServlet {
+public class DeletePostServlet extends HttpServlet {
 
     private PostService postService = PostService.getInstance();
 

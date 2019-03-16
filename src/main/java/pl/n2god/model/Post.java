@@ -44,4 +44,12 @@ public class Post {
     public void setPostData(String postData) {
         this.postData = postData;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

@@ -19,7 +19,6 @@ public class PostServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
 
         List<Post> posts = postService.getPosts();
 
@@ -27,4 +26,11 @@ public class PostServlet extends HttpServlet {
         req.getRequestDispatcher("/showPost.jsp").include(req, resp);
     }
 
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        List<Post> posts = postService.getPosts();
+
+        req.setAttribute("posts", posts);
+        req.getRequestDispatcher("/showPost.jsp").include(req, resp);
+    }
 }

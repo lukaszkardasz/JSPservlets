@@ -42,4 +42,7 @@ public class PostRepository {
         postToDelete.ifPresent(post -> posts.removeIf(p -> p.equals(post)));
     }
 
+    public Optional<Post> getPost(Long id) {
+        return posts.stream().filter(post -> post.getPostId().equals(id)).findFirst();
+    }
 }

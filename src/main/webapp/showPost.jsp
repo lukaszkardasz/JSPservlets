@@ -14,14 +14,16 @@
         <ul>
             <li>Id: ${ post.postId }</li>
             <li>data: ${ post.date }</li>
+            <li>owner:${post.user}  </li>
             <p>Zawartość posta: ${ post.postData }</p>
         </ul>
         </br>
         <c:url var="deleteUrl" value="/deletePost">
             <c:param name="id" value="${ post.postId }" />
         </c:url>
+        <c:if test="${ sessionScope.user.equals(post.user) || sessionScope.user.isAdmin() }">
         <a href="${deleteUrl}" > delete </a>
-
+        </c:if>
     </section>
 </c:forEach>
 
