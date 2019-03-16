@@ -1,6 +1,5 @@
 package pl.n2god.controller;
 
-import pl.n2god.model.Post;
 import pl.n2god.model.User;
 import pl.n2god.service.PostService;
 
@@ -10,21 +9,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
-@WebServlet(name = "posts", urlPatterns = "/posts")
-public class PostServlet extends HttpServlet {
+@WebServlet(name = "deletePost", urlPatterns = "/deletePost")
+public class DeletePost extends HttpServlet {
 
     private PostService postService = PostService.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
 
-        List<Post> posts = postService.getPosts();
+        String id = req.getParameter("id");
+        postService.delete(Long.parseLong(id));
+        req.getRequestDispatcher("/index.jsp").forward(req, resp);
 
-        req.setAttribute("posts", posts);
-        req.getRequestDispatcher("/showPost.jsp").include(req, resp);
     }
-
 }

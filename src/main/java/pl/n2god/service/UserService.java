@@ -32,4 +32,8 @@ public class UserService {
         return userRepository.getUsers();
     }
 
+    public Optional<User> getUser(Long id){
+        return userRepository.getUser(id);
+    }
+
 }

@@ -47,4 +47,8 @@ public class UserRepository {
     public boolean userExist(String login) {
         return users.stream().anyMatch(user -> user.getLogin().equals(login));
     }
+
+    public Optional<User> getUser(Long id) {
+        return users.stream().filter(user -> user.getId().equals(id)).findFirst();
+    }
 }

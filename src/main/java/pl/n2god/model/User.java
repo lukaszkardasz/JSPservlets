@@ -6,24 +6,24 @@ public class User {
     private String login;
     private String password;
     private Role role;
-    private long id;
+    private Long id;
 
     public User(String login, String password, Role user) {
 
     }
 
-    public User(long id, String login, String password, Role role) {
+    public User(Long id, String login, String password, Role role) {
         this.id = id;
         this.login = login;
         this.password = password;
         this.role = role;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

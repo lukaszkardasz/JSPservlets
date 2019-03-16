@@ -8,12 +8,12 @@ import java.time.LocalDateTime;
 public class Post {
 
     private Long postId;
+    private User user;
     private LocalDateTime date;
     private String postData;
 
-    public Post(Long postId, LocalDateTime date, String postData) {
-        this.postId = postId;
-        this.date = date;
+    public Post(String postData, User user) {
+        this.user = user;
         this.postData = postData;
     }
 
