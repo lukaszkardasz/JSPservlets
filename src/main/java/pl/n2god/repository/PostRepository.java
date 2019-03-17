@@ -36,10 +36,10 @@ public class PostRepository {
         posts.add(post);
     }
 
-    public void delete(long id){
-
-        Optional<Post> postToDelete = posts.stream().filter(post -> post.getPostId().equals(id)).findFirst();
-        postToDelete.ifPresent(post -> posts.removeIf(p -> p.equals(post)));
+    public Optional<Post> deletePost(Long id) {
+        Optional<Post> optRemovedPost = getPost(id);
+        optRemovedPost.ifPresent(removedPost -> posts.removeIf(post -> post.equals(removedPost)));
+        return optRemovedPost;
     }
 
     public Optional<Post> getPost(Long id) {

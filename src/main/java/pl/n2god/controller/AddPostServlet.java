@@ -21,8 +21,5 @@ public class AddPostServlet extends HttpServlet {
         User user = (User)req.getSession().getAttribute("user");
         postService.addPost(text, user);
         req.getRequestDispatcher("/index.jsp").forward(req, resp);
-
-
-
     }
 }

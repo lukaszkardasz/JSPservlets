@@ -18,8 +18,8 @@ public class DeletePostServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        String id = req.getParameter("id");
-        postService.delete(Long.parseLong(id));
+        Long id = Long.valueOf(req.getParameter("id"));
+        postService.deletePost(id);
         req.getRequestDispatcher("/index.jsp").forward(req, resp);
 
     }
