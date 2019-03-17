@@ -7,7 +7,7 @@ import javax.servlet.ServletContextListener;
  * @author n2god on 17/03/2019
  * @project JSP
  */
-public class ApplicationStartListener implements ServletContextListener {
+public class AppStartListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         DbUtil.getConnection();

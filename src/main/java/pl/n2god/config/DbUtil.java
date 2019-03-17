@@ -13,18 +13,18 @@ public class DbUtil {
 
     public static final String HOST = "localhost";
     public static final int PORT = 27017;
-    public static final String DATABASE_NAME = "n2God_blog";
+    public static final String DB_NAME = "n2god_blog";
     private static MongoClient instance = null;
 
     public static MongoDatabase getConnection() {
         if (Objects.isNull(instance)) {
             instance = new MongoClient(HOST, PORT);
-        } return instance.getDatabase(DATABASE_NAME);
+        }
+        return instance.getDatabase(DB_NAME);
     }
 
     public static void closeConnection() {
         instance.close();
         instance = null;
     }
-
 }

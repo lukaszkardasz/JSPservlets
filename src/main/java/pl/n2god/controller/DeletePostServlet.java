@@ -23,5 +23,4 @@ public class DeletePostServlet extends HttpServlet {
         req.getRequestDispatcher("/index.jsp").forward(req, resp);
     }
 
-
 }

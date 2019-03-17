@@ -11,6 +11,11 @@ import java.io.IOException;
 
 @WebFilter(filterName = "authority", servletNames = {"userInfo"})
 public class AuthorityFilter implements Filter {
+
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
+    }
+
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
@@ -23,16 +28,9 @@ public class AuthorityFilter implements Filter {
         } else {
             servletResponse.getWriter().println("Nie masz uprawnień");
         }
-
-    }
-
-    @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
-
     }
 
     @Override
     public void destroy() {
-
     }
 }

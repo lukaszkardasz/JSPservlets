@@ -10,16 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "addPost", urlPatterns = "/addPost")
+@WebServlet(name = "addPostServlet", urlPatterns = "/add-post")
 public class AddPostServlet extends HttpServlet {
 
     private PostService postService = PostService.getInstance();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         String text = req.getParameter("text");
-        User user = (User)req.getSession().getAttribute("user");
+        User user = (User) req.getSession().getAttribute("user");
+
         postService.addPost(text, user);
+
         req.getRequestDispatcher("/index.jsp").forward(req, resp);
     }
 }

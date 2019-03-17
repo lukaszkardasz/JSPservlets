@@ -27,13 +27,9 @@ public class PostService {
         this.postRepository = PostRepository.getInstance();
     }
 
-    public void addPost(String postData, User user) {
-        Post postToAdd = new Post(postData, user);
+    public void addPost(String text, User user) {
+        Post postToAdd = new Post(text, user);
         postRepository.save(postToAdd);
-    }
-
-    public List<Post> getPosts() {
-        return postRepository.getPosts();
     }
 
     public Optional<Post> deletePost(Long id) {
@@ -49,18 +45,18 @@ public class PostService {
         Optional<Post> optUpdatedPost = postRepository.getPost(id);
         if (optUpdatedPost.isPresent()) {
             Post updatedPost = optUpdatedPost.get();
-            updatedPost.setPostData(newText);
+            updatedPost.setText(newText);
             return postRepository.update(updatedPost);
         } else {
             return false;
         }
     }
 
-    public Optional<Post> getPost(Long id) {
-        return postRepository.getPost(id);
+    public List<Post> getPosts() {
+        return postRepository.getPosts();
     }
 
-    public Optional<ValidationError> validatePostStructure(String post) {
+    public Optional<ValidationError> validatePost(String post) {
         Optional<ValidationError> error = Optional.empty();
         if (StringUtils.isEmpty(post)) {
             error = Optional.of(new ValidationError("text", "Dodawany post nie może być pusty!"));
@@ -68,4 +64,7 @@ public class PostService {
         return error;
     }
 
+    public Optional<Post> getPost(Long id) {
+        return postRepository.getPost(id);
+    }
 }

@@ -2,6 +2,7 @@ package pl.n2god.controller;
 
 import pl.n2god.model.User;
 import pl.n2god.repository.UserRepository;
+import pl.n2god.service.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,12 +15,12 @@ import java.util.List;
 @WebServlet(name = "users", urlPatterns = "/users")
 public class UsersServlet extends HttpServlet {
 
-    private UserRepository userRepository = UserRepository.getInstance();
+    private UserService userService = UserService.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        List<User> users = userRepository.getUsers();
+        List<User> users = userService.getUsers();
 
         req.setAttribute("users", users);
         req.getRequestDispatcher("/users.jsp").forward(req, resp);

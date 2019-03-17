@@ -31,7 +31,7 @@ public class UserRepository {
 
     private UserRepository() {
         users = DbUtil.getConnection().getCollection("users");
-        save(new User( "user", "user1", Role.USER));
+        save(new User("user", "user1", Role.USER));
         save(new User("admin", "admin1", Role.ADMIN));
         save(new User("test", "test1", Role.USER));
     }
@@ -39,18 +39,20 @@ public class UserRepository {
     public List<User> getUsers() {
         FindIterable<Document> documents = users.find();
         return Lists.newArrayList(documents).stream()
-               .map(User::fromDocument)
- //            .map(user -> User.fromDocument(user))
-               .collect(Collectors.toList());
-
+//              .map(user -> User.fromDocument(user))
+                .map(User::fromDocument)
+                .collect(Collectors.toList());
     }
 
     public Optional<User> getUserByLoginData(String login, String password) {
-        Document document = users.find(and(eq("login", login), eq("password", password))).first();
+        Document document = users
+                .find(and(eq("login", login), eq("password", password))).first();
         return Optional.ofNullable(User.fromDocument(document));
     }
 
+
     public void save(User user) {
+
         if (!userExist(user.getLogin())) {
             users.insertOne(user.getUserAsDocument());
         }
@@ -59,6 +61,5 @@ public class UserRepository {
     public boolean userExist(String login) {
         return Objects.nonNull(users.find(eq("login", login)).first());
     }
-
 
 }

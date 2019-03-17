@@ -1,6 +1,5 @@
 package pl.n2god.filter;
 
-
 import org.apache.commons.lang3.math.NumberUtils;
 import pl.n2god.model.Post;
 import pl.n2god.model.User;
@@ -13,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.Objects;
 import java.util.Optional;
-
 
 @WebFilter(filterName = "objectOwnerFilter", servletNames = {"deletePostServlet"})
 public class ObjectOwnerFilter implements Filter {

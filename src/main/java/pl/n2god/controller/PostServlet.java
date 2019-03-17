@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "posts", urlPatterns = "/posts")
+@WebServlet(name = "postServlet", urlPatterns = "/posts")
 public class PostServlet extends HttpServlet {
 
     private PostService postService = PostService.getInstance();
@@ -33,4 +33,5 @@ public class PostServlet extends HttpServlet {
         req.setAttribute("posts", posts);
         req.getRequestDispatcher("/posts.jsp").include(req, resp);
     }
+
 }

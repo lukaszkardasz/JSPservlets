@@ -1,33 +1,34 @@
 package pl.n2god.model;
 
-import pl.n2god.model.enimeration.Role;
-
 
 import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Post {
-
-    private Long postId;
+    private Long id;
+    private String text;
     private User user;
-    private LocalDateTime date;
-    private String postData;
+    private LocalDateTime createdDate;
 
-    public Post(String postData, User user) {
+    public Post(String text, User user) {
+        this.text = text;
         this.user = user;
-        this.postData = postData;
     }
 
-    public Post (){
-
+    public Long getId() {
+        return id;
     }
 
-    public Long getPostId() {
-        return postId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setPostId(Long postId) {
-        this.postId = postId;
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 
     public User getUser() {
@@ -38,20 +39,12 @@ public class Post {
         this.user = user;
     }
 
-    public LocalDateTime getDate() {
-        return date;
+    public LocalDateTime getCreatedDate() {
+        return createdDate;
     }
 
-    public void setDate(LocalDateTime date) {
-        this.date = date;
-    }
-
-    public String getPostData() {
-        return postData;
-    }
-
-    public void setPostData(String postData) {
-        this.postData = postData;
+    public void setCreatedDate(LocalDateTime createdDate) {
+        this.createdDate = createdDate;
     }
 
     @Override
@@ -59,14 +52,15 @@ public class Post {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Post post = (Post) o;
-        return Objects.equals(postId, post.postId) &&
+        return Objects.equals(id, post.id) &&
+                Objects.equals(text, post.text) &&
                 Objects.equals(user, post.user) &&
-                Objects.equals(date, post.date) &&
-                Objects.equals(postData, post.postData);
+                Objects.equals(createdDate, post.createdDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(postId, user, date, postData);
+        return Objects.hash(id, text, user, createdDate);
     }
 }
+
