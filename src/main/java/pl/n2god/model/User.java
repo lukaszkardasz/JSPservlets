@@ -1,7 +1,10 @@
 package pl.n2god.model;
 
 import org.bson.Document;
+import org.bson.types.ObjectId;
 import pl.n2god.model.enimeration.Role;
+
+import java.util.Objects;
 
 public class User {
     private String login;
@@ -56,6 +59,33 @@ public class User {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public static User fromDocument(Document document) {
+        if (Objects.nonNull(document)) {
+            ObjectId id = document.getObjectId("_id"); //mongoDb id always name like that :D
+            String login = document.getString("login");
+            String password = document.getString("password");
+            Role role = Role.valueOf(document.getString("role"));
+
+            User user = new User(login, password, role);
+            if (Objects.nonNull(id)) {
+                user.setId(id.toString());
+            }
+            return user;
+        } else {
+            return null;
+        }
+    }
+
+    public Document getUserAsDocument() {
+        Document doc = new Document("login", login)
+                .append("password", password)
+                .append("role", role.name());
+        if (Objects.nonNull(id)) {
+            doc.append("_id", new ObjectId(id));
+        }
+        return doc;
     }
 }
 
