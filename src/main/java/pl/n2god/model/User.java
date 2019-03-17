@@ -1,5 +1,6 @@
 package pl.n2god.model;
 
+import org.bson.Document;
 import pl.n2god.model.enimeration.Role;
 
 public class User {
@@ -18,6 +19,8 @@ public class User {
         this.password = password;
         this.role = role;
     }
+
+    public Document document;
 
     public Long getId() {
         return id;
