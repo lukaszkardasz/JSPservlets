@@ -24,7 +24,6 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         HttpSession session = req.getSession();
-        PrintWriter writer = resp.getWriter();
 
         if (session.getAttribute("user") == null) {
             String login = req.getParameter("login");

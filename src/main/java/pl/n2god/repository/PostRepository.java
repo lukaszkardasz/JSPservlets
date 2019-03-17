@@ -7,6 +7,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.stream.IntStream;
 
 public class PostRepository {
     private UserService userService = UserService.getInstance();
@@ -44,5 +46,15 @@ public class PostRepository {
 
     public Optional<Post> getPost(Long id) {
         return posts.stream().filter(post -> post.getPostId().equals(id)).findFirst();
+    }
+
+    public boolean update(Post post) {
+        OptionalInt optIndex = IntStream.range(0, posts.size()).filter(i -> post.getPostId().equals(posts.get(i).getPostId())).findFirst();
+        if (optIndex.isPresent()) {
+            posts.set(optIndex.getAsInt(), post);
+            return true;
+        } else {
+            return false;
+        }
     }
 }

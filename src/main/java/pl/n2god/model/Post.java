@@ -4,6 +4,7 @@ import pl.n2god.model.enimeration.Role;
 
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class Post {
 
@@ -29,6 +30,14 @@ public class Post {
         this.postId = postId;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public LocalDateTime getDate() {
         return date;
     }
@@ -45,11 +54,19 @@ public class Post {
         this.postData = postData;
     }
 
-    public User getUser() {
-        return user;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Post post = (Post) o;
+        return Objects.equals(postId, post.postId) &&
+                Objects.equals(user, post.user) &&
+                Objects.equals(date, post.date) &&
+                Objects.equals(postData, post.postData);
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    @Override
+    public int hashCode() {
+        return Objects.hash(postId, user, date, postData);
     }
 }

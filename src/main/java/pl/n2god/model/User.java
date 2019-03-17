@@ -7,13 +7,13 @@ public class User {
     private String login;
     private String password;
     private Role role;
-    private Long id;
+    private String id;
 
     public User(String login, String password, Role user) {
 
     }
 
-    public User(Long id, String login, String password, Role role) {
+    public User(String id, String login, String password, Role role) {
         this.id = id;
         this.login = login;
         this.password = password;
@@ -22,11 +22,11 @@ public class User {
 
     public Document document;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

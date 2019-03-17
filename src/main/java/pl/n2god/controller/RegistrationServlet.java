@@ -47,8 +47,5 @@ public class RegistrationServlet extends HttpServlet {
             req.setAttribute("message", Message.error(error.get().getErrorMsg()));
             req.getRequestDispatcher("/registration.jsp").forward(req, resp);
         }
-
     }
-
-
 }
