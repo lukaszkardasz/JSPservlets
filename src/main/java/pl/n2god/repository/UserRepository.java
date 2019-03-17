@@ -40,15 +40,15 @@ public class UserRepository {
         FindIterable<Document> documents = users.find();
         return Lists.newArrayList(documents).stream()
                .map(User::fromDocument)
- //               .map(user -> User.fromDocument(user))
-                .collect(Collectors.toList());
+ //            .map(user -> User.fromDocument(user))
+               .collect(Collectors.toList());
 
     }
 
     public Optional<User> getUserByLoginData(String login, String password) {
-
+        Document document = users.find(and(eq("login", login), eq("password", password))).first();
+        return Optional.ofNullable(User.fromDocument(document));
     }
-
 
     public void save(User user) {
         if (!userExist(user.getLogin())) {
@@ -57,10 +57,8 @@ public class UserRepository {
     }
 
     public boolean userExist(String login) {
-        return users.stream().anyMatch(user -> user.getLogin().equals(login));
+        return Objects.nonNull(users.find(eq("login", login)).first());
     }
 
-    public Optional<User> getUser(Long id) {
-        return users.stream().filter(user -> user.getId().equals(id)).findFirst();
-    }
+
 }

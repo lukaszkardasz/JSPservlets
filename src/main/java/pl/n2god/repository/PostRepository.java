@@ -25,7 +25,7 @@ public class PostRepository {
 
     private PostRepository() {
         posts = new ArrayList<>();
-        save(new Post("text cośtam", userService.getUser(1L).get()));
+        //save(new Post("text cośtam", userService.getUsers().get(1)));
     }
 
     public List<Post> getPosts() {

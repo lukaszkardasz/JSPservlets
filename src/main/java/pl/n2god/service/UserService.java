@@ -22,8 +22,6 @@ public class UserService {
         this.userRepository = UserRepository.getInstance();
     }
 
-
-
     public Optional<User> loginUser(String login, String password) {
         return userRepository.getUserByLoginData(login, password);
     }
@@ -32,8 +30,5 @@ public class UserService {
         return userRepository.getUsers();
     }
 
-    public Optional<User> getUser(Long id){
-        return userRepository.getUser(id);
-    }
 
 }

@@ -1,8 +1,10 @@
 package pl.n2god.service;
 
+import org.apache.commons.lang3.StringUtils;
 import pl.n2god.model.Post;
 import pl.n2god.model.User;
 import pl.n2god.repository.PostRepository;
+import pl.n2god.util.ValidationError;
 
 
 import java.util.List;
@@ -34,7 +36,7 @@ public class PostService {
         return postRepository.getPosts();
     }
 
-    public Optional<Post> deletePost(long id){
+    public Optional<Post> deletePost(Long id) {
         Optional<Post> optRemovedPost = postRepository.getPost(id);
         if (optRemovedPost.isPresent()) {
             return postRepository.deletePost(id);
@@ -43,8 +45,27 @@ public class PostService {
         }
     }
 
+    public boolean updatePost(String newText, Long id) {
+        Optional<Post> optUpdatedPost = postRepository.getPost(id);
+        if (optUpdatedPost.isPresent()) {
+            Post updatedPost = optUpdatedPost.get();
+            updatedPost.setPostData(newText);
+            return postRepository.update(updatedPost);
+        } else {
+            return false;
+        }
+    }
 
     public Optional<Post> getPost(Long id) {
         return postRepository.getPost(id);
     }
+
+    public Optional<ValidationError> validatePostStructure(String post) {
+        Optional<ValidationError> error = Optional.empty();
+        if (StringUtils.isEmpty(post)) {
+            error = Optional.of(new ValidationError("text", "Dodawany post nie może być pusty!"));
+        }
+        return error;
+    }
+
 }

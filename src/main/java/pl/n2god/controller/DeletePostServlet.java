@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "deletePost", urlPatterns = "/deletePost")
+@WebServlet(name = "deletePostServlet", urlPatterns = "/delete-post")
 public class DeletePostServlet extends HttpServlet {
 
     private PostService postService = PostService.getInstance();
@@ -21,6 +21,7 @@ public class DeletePostServlet extends HttpServlet {
         Long id = Long.valueOf(req.getParameter("id"));
         postService.deletePost(id);
         req.getRequestDispatcher("/index.jsp").forward(req, resp);
-
     }
+
+
 }

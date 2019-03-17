@@ -23,7 +23,6 @@ public class AdminFilter implements Filter {
         } else {
             servletResponse.getWriter().println("Nie masz uprawnień");
         }
-
     }
 
     @Override

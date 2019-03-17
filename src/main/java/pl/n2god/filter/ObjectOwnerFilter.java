@@ -14,33 +14,35 @@ import java.io.IOException;
 import java.util.Objects;
 import java.util.Optional;
 
-@WebFilter(filterName = "objectOwnerFilter", servletNames = {"deletePost"})
+
+@WebFilter(filterName = "objectOwnerFilter", servletNames = {"deletePostServlet"})
 public class ObjectOwnerFilter implements Filter {
 
-    private PostService postService = PostService.getInstance();
+    private PostService postService;
+
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
+        postService = PostService.getInstance();
+    }
 
     @Override
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain filterChain) throws IOException, ServletException {
         String strId = req.getParameter("id");
-        if (NumberUtils.isNumber(strId)){
+        if (NumberUtils.isNumber(strId)) {
             Long id = Long.parseLong(strId);
             Optional<Post> optPost = postService.getPost(id);
-            if (optPost.isPresent()){
+            if (optPost.isPresent()) {
                 Post post = optPost.get();
                 User postAuthor = post.getUser();
                 User loggedUser = (User) ((HttpServletRequest) req).getSession().getAttribute("user");
-                if (postAuthor.equals(loggedUser) || (Objects.nonNull(loggedUser) && loggedUser.isAdmin())){
+                if (postAuthor.equals(loggedUser) || (Objects.nonNull(loggedUser) && loggedUser.isAdmin())) {
                     filterChain.doFilter(req, resp);
                 } else {
-                    req.setAttribute("message", Message.error("Nie masz uprawinień!"));
+                    req.setAttribute("message", Message.error("Nie masz uprawnień!"));
                 }
             }
         }
         req.getRequestDispatcher("/index.jsp").forward(req, resp);
-    }
-
-    @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
     }
 
     @Override
