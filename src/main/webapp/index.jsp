@@ -9,20 +9,22 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <meta name="blog, programowanie, linux, Java, kali linux, kali, bloguj">
     <link type="text/css" rel="stylesheet" href="${ pageContext.request.contextPath }/css/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,900" rel="stylesheet">
     <title>n2God_blog</title>
 </head>
 
 <style>
     body {
-        font-family: 'Lato', sans-serif;
+        font-family: 'Ubuntu', sans-serif;
     }
-    #container{
+
+    #container {
         width: 1500px;
         margin-left: auto;
         margin-right: auto;
     }
-    #logo{
+
+    #logo {
         float: left;
         color: dodgerblue;
         margin-top: 20px;
@@ -31,18 +33,21 @@
         font-weight: 900;
         width: 750px;
     }
-    #login{
+
+    #login {
         float: right;
         padding: 40px;
         width: 630px;
         background-color: white;
     }
-    #topbar{
+
+    #topbar {
         text-align: center;
         font-size: 16px;
         clear: both;
     }
-    #sidebar{
+
+    #sidebar {
         float: left;
         width: 750px;
         min-height: 400px;
@@ -54,19 +59,19 @@
         vert-align: middle;
 
     }
-    #registerOrLogin{
-        display: flex;
-        justify-content: center; /* align horizontal */
-        align-items: center; /* align vertical */
-    }
-    #content{
-        clear:both;
-    }
-    #footer{
-        min-height: 50px;
+
+    #registerOrLogin {
         text-align: center;
     }
 
+    #content {
+        clear: both;
+    }
+
+    #footer {
+        min-height: 50px;
+        text-align: center;
+    }
 
 
 </style>
@@ -105,13 +110,15 @@
     </div>
     <!--sidebar-->
     <div id="sidebar">
-            Obserwuj to, co Cię interesuje.</br>
-            Dowiedz się, o czym rozmawiają inni.</br>
-            Dołącz do rozmowy!
+        Obserwuj to, co Cię interesuje.</br>
+        Dowiedz się, o czym rozmawiają inni.</br>
+        Dołącz do rozmowy!
     </div>
     <!--registerOrLogin-->
     <div id="registerOrLogin">
-        Zobacz, co piszą w tej chwili</br>
+        <span>
+            <h1>Zobacz, co się u mnie dzieje</h1>
+    </span>
         </br>
         Dołącz już dziś!</br>
         Zarejestruj się</br>
@@ -134,7 +141,8 @@
     </div>
     <!--footer-->
     <div id="footer">
-        n2God Blog &copy; Wszelkie prawa zastrzeżone.
+        O mnie Polityka prywatności</br>
+        &copy; 2019 n2God Blog Wszelkie prawa zastrzeżone.
     </div>
 </div>
 </body>
